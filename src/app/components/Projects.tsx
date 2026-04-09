@@ -85,9 +85,9 @@ export function Projects() {
       id="projects"
       ref={ref}
       className="relative min-h-screen flex flex-col justify-center py-24 overflow-hidden"
-      style={{ background: "#0B0B0B" }}
+      style={{ background: "var(--portfolio-bg)" }}
     >
-      <div style={{ height: "1px", background: "rgba(255,255,255,0.08)", marginBottom: "4rem" }} />
+      <div style={{ height: "1px", background: "var(--portfolio-divider)", marginBottom: "4rem" }} />
 
       <div className="px-8 md:px-16 lg:px-24">
         <motion.p
@@ -95,7 +95,7 @@ export function Projects() {
           animate={isInView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.6 }}
           style={{
-            color: "#E10600",
+            color: "var(--portfolio-accent)",
             fontSize: "0.75rem",
             letterSpacing: "0.3em",
             textTransform: "uppercase",
@@ -110,7 +110,7 @@ export function Projects() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           style={{
-            color: "#FFFFFF",
+            color: "var(--portfolio-text)",
             fontSize: "clamp(3rem, 8vw, 7rem)",
             fontWeight: 800,
             lineHeight: 0.95,
@@ -136,7 +136,7 @@ export function Projects() {
             const translatedProject = t.projects.items[project.id - 1];
             const imageFit: CSSProperties["objectFit"] = project.imageFit ?? "cover";
             const imageBackground =
-              imageFit === "contain" ? "linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))" : "transparent";
+              imageFit === "contain" ? "var(--portfolio-image-frame)" : "transparent";
 
             return (
               <motion.div
@@ -192,10 +192,10 @@ export function Projects() {
                       position: "absolute",
                       inset: 0,
                       background: isHovered
-                        ? "rgba(0,0,0,0.75)"
+                        ? "var(--portfolio-overlay-strong)"
                         : isCenter
-                        ? "rgba(0,0,0,0.2)"
-                        : "rgba(0,0,0,0.5)",
+                        ? "var(--portfolio-overlay-soft)"
+                        : "var(--portfolio-overlay)",
                       transition: "background 0.4s ease",
                     }}
                   />
@@ -208,25 +208,36 @@ export function Projects() {
                         transition: "transform 0.4s ease",
                       }}
                     >
-                      <div className="flex items-end justify-between">
+                      <div
+                        className="flex flex-wrap items-end justify-between gap-3"
+                        style={{
+                          padding: "0.85rem 1rem",
+                          borderRadius: "6px",
+                          border: "1px solid var(--panel-border)",
+                          background: "var(--panel-bg)",
+                          backdropFilter: "blur(6px)",
+                        }}
+                      >
                         <div>
                           <p
                             style={{
-                              color: "rgba(255,255,255,0.5)",
+                              color: "var(--panel-text)",
                               fontSize: "0.65rem",
                               letterSpacing: "0.2em",
                               textTransform: "uppercase",
                               marginBottom: "0.3rem",
+                              opacity: 0.85,
                             }}
                           >
                             {project.year}
                           </p>
                           <h3
                             style={{
-                              color: "#FFFFFF",
+                              color: "var(--panel-text)",
                               fontSize: "1.3rem",
                               fontWeight: 700,
                               letterSpacing: "-0.02em",
+                              textShadow: "var(--text-shadow-strong)",
                             }}
                           >
                             {translatedProject.name}
@@ -237,13 +248,14 @@ export function Projects() {
                             <span
                               key={tag}
                               style={{
-                                color: "rgba(255,255,255,0.5)",
+                                color: "var(--panel-text)",
                                 fontSize: "0.6rem",
                                 letterSpacing: "0.15em",
                                 textTransform: "uppercase",
-                                border: "1px solid rgba(255,255,255,0.15)",
+                                border: "1px solid var(--panel-tag-border)",
                                 padding: "2px 8px",
                                 borderRadius: "2px",
+                                background: "var(--panel-tag-bg)",
                               }}
                             >
                               {tag}
@@ -263,18 +275,29 @@ export function Projects() {
                         pointerEvents: isHovered ? "auto" : "none",
                       }}
                     >
-                      <div className="flex items-center gap-3">
+                      <div
+                        className="flex flex-col items-center gap-4"
+                        style={{
+                          padding: "1.2rem 1.4rem",
+                          borderRadius: "8px",
+                          border: "1px solid var(--card-border)",
+                          background: "var(--card-bg)",
+                          backdropFilter: "blur(8px)",
+                          boxShadow: "var(--panel-shadow)",
+                        }}
+                      >
+                        <div className="flex items-center gap-3">
                         {project.demo && (
                           <button
                             type="button"
                             className="flex items-center gap-2"
                             style={{
-                              color: "#E10600",
+                              color: "var(--portfolio-accent)",
                               fontSize: "0.7rem",
                               letterSpacing: "0.25em",
                               textTransform: "uppercase",
                               fontWeight: 600,
-                              border: "1px solid rgba(225,6,0,0.6)",
+                              border: "1px solid rgba(var(--portfolio-accent-rgb), 0.6)",
                               padding: "6px 10px",
                               borderRadius: "2px",
                               background: "transparent",
@@ -293,12 +316,12 @@ export function Projects() {
                           type="button"
                           className="flex items-center gap-2"
                           style={{
-                            color: "rgba(255,255,255,0.75)",
+                            color: "var(--portfolio-text)",
                             fontSize: "0.7rem",
                             letterSpacing: "0.25em",
                             textTransform: "uppercase",
                             fontWeight: 600,
-                            border: "1px solid rgba(255,255,255,0.25)",
+                            border: "1px solid var(--portfolio-border-strong)",
                             padding: "6px 10px",
                             borderRadius: "2px",
                             background: "transparent",
@@ -312,17 +335,18 @@ export function Projects() {
                           <Github style={{ width: "16px", height: "16px" }} />
                           {t.projects.repoLabel}
                         </button>
+                        </div>
+                        <p
+                          style={{
+                            color: "var(--portfolio-text)",
+                            fontSize: "0.8rem",
+                            textAlign: "center",
+                            maxWidth: "220px",
+                          }}
+                        >
+                          {translatedProject.description}
+                        </p>
                       </div>
-                      <p
-                        style={{
-                          color: "rgba(255,255,255,0.6)",
-                          fontSize: "0.8rem",
-                          textAlign: "center",
-                          maxWidth: "200px",
-                        }}
-                      >
-                        {translatedProject.description}
-                      </p>
                     </div>
                   )}
                 </div>
@@ -337,22 +361,23 @@ export function Projects() {
           style={{
             width: "48px",
             height: "48px",
-            border: "1px solid rgba(255,255,255,0.1)",
+            border: "1px solid var(--portfolio-border)",
             borderRadius: "50%",
             background: "none",
             cursor: "pointer",
             transition: "all 0.3s ease",
           }}
           onMouseEnter={(e) => {
-            (e.currentTarget as HTMLButtonElement).style.borderColor = "#E10600";
-            (e.currentTarget as HTMLButtonElement).style.background = "rgba(225,6,0,0.1)";
+            (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--portfolio-accent)";
+            (e.currentTarget as HTMLButtonElement).style.background =
+              "rgba(var(--portfolio-accent-rgb), 0.1)";
           }}
           onMouseLeave={(e) => {
-            (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.1)";
+            (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--portfolio-border)";
             (e.currentTarget as HTMLButtonElement).style.background = "none";
           }}
         >
-          <ChevronLeft style={{ color: "rgba(255,255,255,0.6)", width: "20px", height: "20px" }} />
+          <ChevronLeft style={{ color: "var(--portfolio-text-subtle)", width: "20px", height: "20px" }} />
         </button>
 
         <button
@@ -361,22 +386,23 @@ export function Projects() {
           style={{
             width: "48px",
             height: "48px",
-            border: "1px solid rgba(255,255,255,0.1)",
+            border: "1px solid var(--portfolio-border)",
             borderRadius: "50%",
             background: "none",
             cursor: "pointer",
             transition: "all 0.3s ease",
           }}
           onMouseEnter={(e) => {
-            (e.currentTarget as HTMLButtonElement).style.borderColor = "#E10600";
-            (e.currentTarget as HTMLButtonElement).style.background = "rgba(225,6,0,0.1)";
+            (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--portfolio-accent)";
+            (e.currentTarget as HTMLButtonElement).style.background =
+              "rgba(var(--portfolio-accent-rgb), 0.1)";
           }}
           onMouseLeave={(e) => {
-            (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.1)";
+            (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--portfolio-border)";
             (e.currentTarget as HTMLButtonElement).style.background = "none";
           }}
         >
-          <ChevronRight style={{ color: "rgba(255,255,255,0.6)", width: "20px", height: "20px" }} />
+          <ChevronRight style={{ color: "var(--portfolio-text-subtle)", width: "20px", height: "20px" }} />
         </button>
       </motion.div>
 
@@ -392,7 +418,7 @@ export function Projects() {
               width: i === current ? "24px" : "6px",
               height: "6px",
               borderRadius: "3px",
-              background: i === current ? "#E10600" : "rgba(255,255,255,0.2)",
+              background: i === current ? "var(--portfolio-accent)" : "var(--portfolio-text-ghost)",
               border: "none",
               cursor: "pointer",
               transition: "all 0.3s ease",
@@ -405,7 +431,7 @@ export function Projects() {
       <div className="flex justify-center mt-4">
         <span
           style={{
-            color: "rgba(255,255,255,0.25)",
+            color: "var(--portfolio-text-ghost)",
             fontSize: "0.7rem",
             letterSpacing: "0.2em",
           }}
@@ -421,22 +447,22 @@ export function Projects() {
       >
         <ArrowUpLeft
           style={{
-            color: "rgba(255,255,255,0.25)",
+            color: "var(--portfolio-text-ghost)",
             transition: "color 0.3s ease",
             width: "20px",
             height: "20px",
           }}
-          className="group-hover:!text-white"
+          className="portfolio-hover-text"
         />
         <span
           style={{
-            color: "rgba(255,255,255,0.25)",
+            color: "var(--portfolio-text-ghost)",
             fontSize: "0.65rem",
             letterSpacing: "0.25em",
             textTransform: "uppercase",
             transition: "color 0.3s ease",
           }}
-          className="group-hover:!text-white"
+          className="portfolio-hover-text"
         >
           {t.projects.backToTop}
         </span>

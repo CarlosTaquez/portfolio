@@ -7,12 +7,12 @@ export function Footer() {
     <footer
       id="footer"
       className="relative flex items-center justify-center py-8 px-8 md:px-16 lg:px-24"
-      style={{ background: "#0B0B0B" }}
+      style={{ background: "var(--portfolio-bg)" }}
     >
-      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "1px", background: "rgba(255,255,255,0.08)" }} />
+      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "1px", background: "var(--portfolio-divider)" }} />
       <span
         style={{
-          color: "rgba(255,255,255,0.35)",
+          color: "var(--portfolio-text-faint)",
           fontSize: "0.7rem",
           letterSpacing: "0.2em",
           textTransform: "uppercase",

@@ -1,61 +1,22 @@
-import { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import Image from "next/image";
 import { useTranslation } from "../context/LanguageContext";
 
 export function Hero() {
   const profileImageSrc = "/carlos.png?v=3";
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isHovering, setIsHovering] = useState(false);
-  const [visible, setVisible] = useState(true);
   const { t } = useTranslation();
-
-  const navItems = [
-    { label: t.hero.interactive.about, id: "about" },
-    { label: t.hero.interactive.projects, id: "projects" },
-    { label: t.hero.interactive.testimonials, id: "testimonials" },
-    { label: t.hero.interactive.experience, id: "experience" },
-    { label: t.hero.interactive.skills, id: "skills" },
-    { label: t.hero.interactive.contact, id: "contact" },
-  ];
-
-  const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  useEffect(() => {
-    if (isHovering) return;
-    const interval = setInterval(() => {
-      setVisible(false);
-      setTimeout(() => {
-        setActiveIndex((prev) => (prev + 1) % navItems.length);
-        setVisible(true);
-      }, 300);
-    }, 2500);
-    return () => clearInterval(interval);
-  }, [isHovering, navItems.length]);
-
-  const handleHover = (index: number) => {
-    setIsHovering(true);
-    setActiveIndex(index);
-    setVisible(true);
-  };
-
-  const handleLeave = () => {
-    setIsHovering(false);
-  };
 
   return (
     <section
       id="hero"
       className="relative min-h-screen px-8 md:px-16 lg:px-24 pt-24 pb-10"
-      style={{ background: "#0B0B0B" }}
+      style={{ background: "var(--portfolio-bg)" }}
     >
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           backgroundImage:
-            "radial-gradient(circle at 80% 20%, rgba(225,6,0,0.04) 0%, transparent 60%)",
+            "radial-gradient(circle at 80% 18%, rgba(var(--portfolio-accent-rgb), 0.025) 0%, transparent 55%)",
         }}
       />
 
@@ -68,7 +29,7 @@ export function Hero() {
           >
             <p
               style={{
-                color: "rgba(255,255,255,0.35)",
+                color: "var(--portfolio-text-faint)",
                 fontSize: "clamp(1rem, 2vw, 1.1rem)",
                 letterSpacing: "0.3em",
                 textTransform: "uppercase",
@@ -80,7 +41,7 @@ export function Hero() {
 
             <h1
               style={{
-                color: "#FFFFFF",
+                color: "var(--portfolio-text)",
                 fontSize: "clamp(2.6rem, 5.8vw, 5.9rem)",
                 fontWeight: 800,
                 lineHeight: 0.95,
@@ -89,14 +50,14 @@ export function Hero() {
               }}
             >
               <span className="block">{t.hero.hello}</span>
-              <span className="block" style={{ color: "rgba(255,255,255,0.9)" }}>
+              <span className="block" style={{ color: "var(--portfolio-text-muted)" }}>
                 {t.hero.iam}
               </span>
               <span className="block">{t.hero.firstName}</span>
               <span className="block">{t.hero.lastName}</span>
               <span
                 className="block"
-                style={{ color: "rgba(255,255,255,0.55)", fontWeight: 300 }}
+                style={{ color: "var(--portfolio-text-subtle)", fontWeight: 300 }}
               >
                 {t.hero.role}
               </span>
@@ -110,7 +71,7 @@ export function Hero() {
             style={{
               originX: 0,
               height: "1px",
-              background: "rgba(255,255,255,0.1)",
+              background: "var(--portfolio-divider)",
               marginTop: "3rem",
               marginBottom: "2.5rem",
               maxWidth: "600px",
@@ -122,46 +83,7 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
             className="flex flex-wrap gap-4 md:gap-8 items-center"
-            onMouseLeave={handleLeave}
           >
-            {navItems.map((item, index) => (
-              <button
-                key={item.id}
-                onClick={() => scrollTo(item.id)}
-                onMouseEnter={() => handleHover(index)}
-                style={{
-                  fontSize: "clamp(0.85rem, 1.5vw, 1rem)",
-                  fontWeight: 500,
-                  letterSpacing: "0.15em",
-                  textTransform: "uppercase",
-                  background: "none",
-                  border: "none",
-                  cursor: "pointer",
-                  padding: "0.5rem 0",
-                  position: "relative",
-                  transition: "color 0.3s ease",
-                  color:
-                    activeIndex === index ? "#E10600" : "rgba(255,255,255,0.4)",
-                }}
-              >
-                {activeIndex === index && (
-                  <motion.span
-                    layoutId="activeIndicator"
-                    style={{
-                      position: "absolute",
-                      bottom: 0,
-                      left: 0,
-                      right: 0,
-                      height: "1px",
-                      background: "#E10600",
-                    }}
-                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                  />
-                )}
-                {item.label}
-              </button>
-            ))}
-
             <a
               href="/CV.pdf"
               target="_blank"
@@ -171,20 +93,23 @@ export function Hero() {
                 fontWeight: 600,
                 letterSpacing: "0.2em",
                 textTransform: "uppercase",
-                color: "#FFFFFF",
-                border: "1px solid rgba(255,255,255,0.2)",
+                color: "var(--portfolio-text)",
+                border: "1px solid var(--portfolio-border-strong)",
                 padding: "0.55rem 1rem",
                 borderRadius: "2px",
                 textDecoration: "none",
                 transition: "all 0.3s ease",
               }}
               onMouseEnter={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.borderColor = "#E10600";
-                (e.currentTarget as HTMLAnchorElement).style.color = "#E10600";
+                (e.currentTarget as HTMLAnchorElement).style.borderColor =
+                  "var(--portfolio-accent)";
+                (e.currentTarget as HTMLAnchorElement).style.color =
+                  "var(--portfolio-accent)";
               }}
               onMouseLeave={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.2)";
-                (e.currentTarget as HTMLAnchorElement).style.color = "#FFFFFF";
+                (e.currentTarget as HTMLAnchorElement).style.borderColor =
+                  "var(--portfolio-border-strong)";
+                (e.currentTarget as HTMLAnchorElement).style.color = "var(--portfolio-text)";
               }}
             >
               {t.hero.cvLabel}
@@ -201,12 +126,11 @@ export function Hero() {
           <div
             className="relative w-[min(86vw,420px)] sm:w-[min(70vw,460px)] md:w-[clamp(380px,34vw,520px)]"
             style={{
-              opacity: 0.75,
-              filter: "brightness(0.95) contrast(1.05)",
+              filter: "contrast(1.1) brightness(0.98)",
               maskImage:
-                "linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 18%, rgba(0,0,0,1) 82%, rgba(0,0,0,0) 100%)",
+                "linear-gradient(to right, var(--mask-transparent) 0%, var(--mask-opaque) 18%, var(--mask-opaque) 82%, var(--mask-transparent) 100%)",
               WebkitMaskImage:
-                "linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 18%, rgba(0,0,0,1) 82%, rgba(0,0,0,0) 100%)",
+                "linear-gradient(to right, var(--mask-transparent) 0%, var(--mask-opaque) 18%, var(--mask-opaque) 82%, var(--mask-transparent) 100%)",
             }}
           >
             <Image
@@ -216,7 +140,7 @@ export function Hero() {
               width={420}
               height={560}
               priority
-              className="w-full h-auto object-cover blur-[0.4px]"
+              className="w-full h-auto object-cover grayscale contrast-110 brightness-95"
             />
           </div>
         </motion.div>
@@ -234,14 +158,14 @@ export function Hero() {
           style={{
             width: "1px",
             height: "60px",
-            background: "linear-gradient(to bottom, rgba(255,255,255,0.5), transparent)",
+            background: "linear-gradient(to bottom, var(--portfolio-text-subtle), transparent)",
           }}
         />
         <span
           style={{
             fontSize: "0.65rem",
             letterSpacing: "0.25em",
-            color: "rgba(255,255,255,0.3)",
+            color: "var(--portfolio-text-faint)",
             textTransform: "uppercase",
             writingMode: "vertical-rl",
             marginTop: "0.5rem",
@@ -256,7 +180,7 @@ export function Hero() {
         style={{
           fontSize: "clamp(8rem, 20vw, 22rem)",
           fontWeight: 900,
-          color: "rgba(255,255,255,0.02)",
+          color: "color-mix(in srgb, var(--portfolio-text) 4%, transparent)",
           lineHeight: 1,
           letterSpacing: "-0.05em",
         }}

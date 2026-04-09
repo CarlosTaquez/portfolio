@@ -23,17 +23,17 @@ export function About() {
       id="about"
       ref={ref}
       className="relative min-h-screen flex flex-col justify-center px-8 md:px-16 lg:px-24 py-24"
-      style={{ background: "#0B0B0B" }}
+      style={{ background: "var(--portfolio-bg)" }}
     >
-      <div style={{ height: "1px", background: "rgba(255,255,255,0.08)", marginBottom: "4rem" }} />
+      <div style={{ height: "1px", background: "var(--portfolio-divider)", marginBottom: "4rem" }} />
 
-      <div className="max-w-4xl w-full">
+      <div className="max-w-6xl w-full">
         <motion.p
           initial={{ opacity: 0, x: -20 }}
           animate={isInView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.6 }}
           style={{
-            color: "#E10600",
+            color: "var(--portfolio-accent)",
             fontSize: "0.75rem",
             letterSpacing: "0.3em",
             textTransform: "uppercase",
@@ -60,7 +60,7 @@ export function About() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           style={{
-            color: "#FFFFFF",
+            color: "var(--portfolio-text)",
             fontSize: "clamp(3rem, 8vw, 7rem)",
             fontWeight: 800,
             lineHeight: 0.95,
@@ -100,7 +100,7 @@ export function About() {
                 exit="exit"
                 transition={{ duration: 0.4 }}
                 style={{
-                  color: "rgba(255,255,255,0.7)",
+                  color: "var(--portfolio-text-muted)",
                   fontSize: "clamp(1rem, 1.5vw, 1.1rem)",
                   lineHeight: 1.85,
                   fontWeight: 300,
@@ -110,6 +110,44 @@ export function About() {
                 {t.about.bio}
               </motion.p>
             </AnimatePresence>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.45 }}
+              style={{ marginTop: "2.5rem" }}
+            >
+              <p
+                style={{
+                  color: "var(--portfolio-text-faint)",
+                  fontSize: "0.7rem",
+                  letterSpacing: "0.3em",
+                  textTransform: "uppercase",
+                  marginBottom: "1rem",
+                }}
+              >
+                {t.about.focusLabel}
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {t.about.focusItems.map((item) => (
+                  <span
+                    key={item}
+                    style={{
+                      color: "var(--portfolio-text-subtle)",
+                      fontSize: "0.7rem",
+                      letterSpacing: "0.18em",
+                      textTransform: "uppercase",
+                      border: "1px solid var(--portfolio-border)",
+                      padding: "4px 10px",
+                      borderRadius: "999px",
+                      background: "var(--portfolio-card)",
+                    }}
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
           </motion.div>
 
           <motion.div
@@ -117,39 +155,72 @@ export function About() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={`hobbies-${lang}`}
-                variants={fadeVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                transition={{ duration: 0.4 }}
-              >
-                <p
-                  style={{
-                    color: "rgba(255,255,255,0.3)",
-                    fontSize: "0.7rem",
-                    letterSpacing: "0.3em",
-                    textTransform: "uppercase",
-                    marginBottom: "1.5rem",
-                  }}
+            <div className="grid grid-cols-1 gap-8">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={`hobbies-${lang}`}
+                  variants={fadeVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  transition={{ duration: 0.4 }}
                 >
-                  {t.about.hobbiesLabel}
-                </p>
-                <p
-                  style={{
-                    color: "rgba(255,255,255,0.6)",
-                    fontSize: "clamp(0.9rem, 1.3vw, 1rem)",
-                    lineHeight: 1.85,
-                    fontWeight: 300,
-                    maxWidth: "420px",
-                  }}
-                >
-                  {t.about.hobbiesText}
-                </p>
-              </motion.div>
-            </AnimatePresence>
+                  <p
+                    style={{
+                      color: "var(--portfolio-text-faint)",
+                      fontSize: "0.7rem",
+                      letterSpacing: "0.3em",
+                      textTransform: "uppercase",
+                      marginBottom: "1.5rem",
+                    }}
+                  >
+                    {t.about.hobbiesLabel}
+                  </p>
+                  <p
+                    style={{
+                      color: "var(--portfolio-text-subtle)",
+                      fontSize: "clamp(0.9rem, 1.3vw, 1rem)",
+                      lineHeight: 1.85,
+                      fontWeight: 300,
+                    }}
+                  >
+                    {t.about.hobbiesText}
+                  </p>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.7 }}
+            className="md:col-span-2 md:flex md:justify-center"
+          >
+            <div className="w-full md:max-w-5xl">
+              <p className="mb-4 text-[0.7rem] uppercase tracking-[0.3em] text-slate-500 dark:text-white/50 md:text-center">
+                {t.about.highlightsLabel}
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {t.about.highlights.map((item, index) => (
+                  <div
+                    key={item.title}
+                    className={`h-full w-full max-w-sm mx-auto min-w-0 rounded-xl border border-slate-200/70 bg-white/80 p-6 text-slate-900 shadow-sm dark:border-white/10 dark:bg-white/5 dark:text-white ${
+                      index === t.about.highlights.length - 1
+                        ? "lg:col-span-3 lg:justify-self-center"
+                        : ""
+                    }`}
+                  >
+                    <p className="text-lg font-semibold break-words">
+                      {item.title}
+                    </p>
+                    <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-white/70 break-words">
+                      {item.text}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>
@@ -161,12 +232,12 @@ export function About() {
       >
         <ArrowUpLeft
           style={{
-            color: "rgba(255,255,255,0.25)",
+            color: "var(--portfolio-text-ghost)",
             transition: "color 0.3s ease",
             width: "20px",
             height: "20px",
           }}
-          className="group-hover:!text-white"
+          className="portfolio-hover-text"
         />
         <AnimatePresence mode="wait">
           <motion.span
@@ -177,14 +248,14 @@ export function About() {
             exit="exit"
             transition={{ duration: 0.3 }}
             style={{
-              color: "rgba(255,255,255,0.25)",
+              color: "var(--portfolio-text-ghost)",
               fontSize: "0.65rem",
               letterSpacing: "0.25em",
               textTransform: "uppercase",
               transition: "color 0.3s ease",
               display: "inline-block",
             }}
-            className="group-hover:!text-white"
+            className="portfolio-hover-text"
           >
             {t.about.backToTop}
           </motion.span>

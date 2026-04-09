@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { motion, useInView, AnimatePresence } from "motion/react";
-import { ArrowUpLeft, Mail, Github, Instagram, Linkedin } from "lucide-react";
+import { ArrowUpLeft, Mail, Github, Linkedin } from "lucide-react";
 import { useTranslation } from "../context/LanguageContext";
 
 function scrollToTop() {
@@ -18,12 +18,6 @@ const socials = [
     name: "GitHub",
     icon: Github,
     href: "https://github.com/CarlosTaquez",
-    newTab: true,
-  },
-  {
-    name: "Instagram",
-    icon: Instagram,
-    href: "https://instagram.com/carlos_andres.t",
     newTab: true,
   },
   {
@@ -50,16 +44,16 @@ export function Contact() {
       id="contact"
       ref={ref}
       className="relative min-h-screen flex flex-col justify-center px-8 md:px-16 lg:px-24 py-24"
-      style={{ background: "#0B0B0B" }}
+      style={{ background: "var(--portfolio-bg)" }}
     >
-      <div style={{ height: "1px", background: "rgba(255,255,255,0.08)", marginBottom: "4rem" }} />
+      <div style={{ height: "1px", background: "var(--portfolio-divider)", marginBottom: "4rem" }} />
 
       <motion.p
         initial={{ opacity: 0, x: -20 }}
         animate={isInView ? { opacity: 1, x: 0 } : {}}
         transition={{ duration: 0.6 }}
         style={{
-          color: "#E10600",
+          color: "var(--portfolio-accent)",
           fontSize: "0.75rem",
           letterSpacing: "0.3em",
           textTransform: "uppercase",
@@ -86,7 +80,7 @@ export function Contact() {
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
         style={{
-          color: "#FFFFFF",
+          color: "var(--portfolio-text)",
           fontSize: "clamp(3rem, 8vw, 7rem)",
           fontWeight: 800,
           lineHeight: 0.95,
@@ -124,7 +118,7 @@ export function Contact() {
             exit="exit"
             transition={{ duration: 0.4 }}
             style={{
-              color: "rgba(255,255,255,0.35)",
+              color: "var(--portfolio-text-faint)",
               fontSize: "clamp(0.9rem, 1.5vw, 1.05rem)",
               fontWeight: 300,
               maxWidth: "400px",
@@ -156,24 +150,22 @@ export function Contact() {
                 style={{
                   width: "68px",
                   height: "68px",
-                  border: "1px solid rgba(255,255,255,0.1)",
+                  border: "1px solid var(--card-border)",
                   borderRadius: "4px",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  transition: "all 0.4s ease",
-                  background: "rgba(255,255,255,0.02)",
+                  background: "var(--card-bg)",
                 }}
-                className="group-hover:!border-[#E10600] group-hover:!bg-[rgba(225,6,0,0.08)] group-hover:shadow-[0_0_24px_rgba(225,6,0,0.18)]"
+                className="accent-hover-card"
               >
                 <Icon
                   style={{
                     width: "24px",
                     height: "24px",
-                    color: "rgba(255,255,255,0.5)",
-                    transition: "color 0.3s ease",
+                    color: "var(--text-subtle)",
                   }}
-                  className="group-hover:!text-[#E10600]"
+                  className="accent-hover-icon"
                 />
               </div>
             </motion.a>
@@ -189,7 +181,7 @@ export function Contact() {
       >
         <span
           style={{
-            color: "rgba(255,255,255,0.15)",
+            color: "var(--portfolio-text-ghost)",
             fontSize: "0.65rem",
             letterSpacing: "0.2em",
             textTransform: "uppercase",
@@ -206,12 +198,12 @@ export function Contact() {
       >
         <ArrowUpLeft
           style={{
-            color: "rgba(255,255,255,0.25)",
+            color: "var(--portfolio-text-ghost)",
             transition: "color 0.3s ease",
             width: "20px",
             height: "20px",
           }}
-          className="group-hover:!text-white"
+          className="portfolio-hover-text"
         />
         <AnimatePresence mode="wait">
           <motion.span
@@ -222,14 +214,14 @@ export function Contact() {
             exit="exit"
             transition={{ duration: 0.3 }}
             style={{
-              color: "rgba(255,255,255,0.25)",
+              color: "var(--portfolio-text-ghost)",
               fontSize: "0.65rem",
               letterSpacing: "0.25em",
               textTransform: "uppercase",
               transition: "color 0.3s ease",
               display: "inline-block",
             }}
-            className="group-hover:!text-white"
+            className="portfolio-hover-text"
           >
             {t.contact.backToTop}
           </motion.span>

@@ -39,6 +39,68 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  --portfolio-accent: #e10600;
+  --portfolio-accent-rgb: 225, 6, 0;
+  --portfolio-bg: #f1ede6;
+  --portfolio-bg-alt: #faf7f2;
+  --portfolio-text: #1a1714;
+  --portfolio-text-muted: rgba(26, 23, 20, 0.72);
+  --portfolio-text-subtle: rgba(26, 23, 20, 0.55);
+  --portfolio-text-faint: rgba(26, 23, 20, 0.4);
+  --portfolio-text-ghost: rgba(26, 23, 20, 0.24);
+  --portfolio-border: rgba(26, 23, 20, 0.12);
+  --portfolio-border-strong: rgba(26, 23, 20, 0.18);
+  --portfolio-divider: rgba(26, 23, 20, 0.08);
+  --portfolio-card: rgba(250, 247, 242, 0.92);
+  --portfolio-card-strong: rgba(250, 247, 242, 0.98);
+  --portfolio-skill-card: #f7f3ee;
+  --portfolio-skill-surface: #ffffff;
+  --portfolio-overlay: rgba(0, 0, 0, 0.32);
+  --portfolio-overlay-soft: rgba(0, 0, 0, 0.12);
+  --portfolio-overlay-strong: rgba(0, 0, 0, 0.62);
+  --portfolio-nav-bg: rgba(241, 237, 230, 0.9);
+  --portfolio-nav-border: rgba(26, 23, 20, 0.08);
+  --portfolio-shadow: 0 24px 60px rgba(26, 23, 20, 0.18);
+  --portfolio-scrollbar-track: #f1ede6;
+  --portfolio-scrollbar-thumb: #e10600;
+  --portfolio-image-frame: linear-gradient(135deg, rgba(26, 23, 20, 0.08), rgba(26, 23, 20, 0.02));
+  --portfolio-skill-frame: rgba(26, 23, 20, 0.16);
+
+  --bg-primary: var(--portfolio-bg);
+  --bg-surface: var(--portfolio-bg-alt);
+  --text-primary: var(--portfolio-text);
+  --text-muted: var(--portfolio-text-muted);
+  --text-subtle: var(--portfolio-text-subtle);
+  --text-ghost: var(--portfolio-text-ghost);
+  --text-inverse: #ffffff;
+  --card-bg: var(--portfolio-card);
+  --card-border: var(--portfolio-border);
+  --accent: var(--portfolio-accent);
+  --accent-rgb: var(--portfolio-accent-rgb);
+  --accent-hover: #ff1a00;
+  --selection-text: #ffffff;
+  --card-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  --panel-bg: rgba(0, 0, 0, 0.55);
+  --panel-border: rgba(255, 255, 255, 0.2);
+  --panel-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+  --panel-text: #ffffff;
+  --panel-tag-bg: rgba(0, 0, 0, 0.25);
+  --panel-tag-border: rgba(255, 255, 255, 0.25);
+  --text-shadow-strong: 0 8px 18px rgba(0, 0, 0, 0.35);
+  --mask-transparent: rgba(0, 0, 0, 0);
+  --mask-opaque: rgba(0, 0, 0, 1);
+
+  --skill-html: #e34f26;
+  --skill-css: #1572b6;
+  --skill-js: #f7df1e;
+  --skill-ts: #3178c6;
+  --skill-next: var(--text-primary);
+  --skill-java: #ed8b00;
+  --skill-spring: #6db33f;
+  --skill-python: #3776ab;
+  --skill-mongo: #47a248;
+  --skill-sql: #cc2927;
 }
 
 .dark {
@@ -76,6 +138,83 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(0.269 0 0);
   --sidebar-ring: oklch(0.439 0 0);
+
+  --portfolio-accent: #e10600;
+  --portfolio-accent-rgb: 225, 6, 0;
+  --portfolio-bg: #0b0b0b;
+  --portfolio-bg-alt: #111111;
+  --portfolio-text: #ffffff;
+  --portfolio-text-muted: rgba(255, 255, 255, 0.72);
+  --portfolio-text-subtle: rgba(255, 255, 255, 0.55);
+  --portfolio-text-faint: rgba(255, 255, 255, 0.35);
+  --portfolio-text-ghost: rgba(255, 255, 255, 0.2);
+  --portfolio-border: rgba(255, 255, 255, 0.12);
+  --portfolio-border-strong: rgba(255, 255, 255, 0.18);
+  --portfolio-divider: rgba(255, 255, 255, 0.08);
+  --portfolio-card: rgba(255, 255, 255, 0.02);
+  --portfolio-card-strong: rgba(0, 0, 0, 0.35);
+  --portfolio-skill-card: #111111;
+  --portfolio-skill-surface: #0f0f0f;
+  --portfolio-overlay: rgba(0, 0, 0, 0.5);
+  --portfolio-overlay-soft: rgba(0, 0, 0, 0.2);
+  --portfolio-overlay-strong: rgba(0, 0, 0, 0.75);
+  --portfolio-nav-bg: rgba(11, 11, 11, 0.92);
+  --portfolio-nav-border: rgba(255, 255, 255, 0.05);
+  --portfolio-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+  --portfolio-scrollbar-track: #0b0b0b;
+  --portfolio-scrollbar-thumb: #e10600;
+  --portfolio-image-frame: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  --portfolio-skill-frame: rgba(255, 255, 255, 0.18);
+
+  --bg-primary: var(--portfolio-bg);
+  --bg-surface: var(--portfolio-bg-alt);
+  --text-primary: var(--portfolio-text);
+  --text-muted: var(--portfolio-text-muted);
+  --text-subtle: var(--portfolio-text-subtle);
+  --text-ghost: var(--portfolio-text-ghost);
+  --text-inverse: #0b0b0b;
+  --card-bg: var(--portfolio-card);
+  --card-border: var(--portfolio-border);
+  --accent: var(--portfolio-accent);
+  --accent-rgb: var(--portfolio-accent-rgb);
+  --accent-hover: #ff1a00;
+  --selection-text: #ffffff;
+  --card-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  --panel-bg: rgba(0, 0, 0, 0.6);
+  --panel-border: rgba(255, 255, 255, 0.2);
+  --panel-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+  --panel-text: #ffffff;
+  --panel-tag-bg: rgba(0, 0, 0, 0.35);
+  --panel-tag-border: rgba(255, 255, 255, 0.25);
+  --text-shadow-strong: 0 8px 18px rgba(0, 0, 0, 0.45);
+  --mask-transparent: rgba(0, 0, 0, 0);
+  --mask-opaque: rgba(0, 0, 0, 1);
+}
+
+.light {
+  --bg-primary: var(--portfolio-bg);
+  --bg-surface: var(--portfolio-bg-alt);
+  --text-primary: var(--portfolio-text);
+  --text-muted: var(--portfolio-text-muted);
+  --text-subtle: var(--portfolio-text-subtle);
+  --text-ghost: var(--portfolio-text-ghost);
+  --text-inverse: #ffffff;
+  --card-bg: var(--portfolio-card);
+  --card-border: var(--portfolio-border);
+  --accent: var(--portfolio-accent);
+  --accent-rgb: var(--portfolio-accent-rgb);
+  --accent-hover: #ff1a00;
+  --selection-text: #ffffff;
+  --card-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  --panel-bg: rgba(0, 0, 0, 0.55);
+  --panel-border: rgba(255, 255, 255, 0.2);
+  --panel-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+  --panel-text: #ffffff;
+  --panel-tag-bg: rgba(0, 0, 0, 0.25);
+  --panel-tag-border: rgba(255, 255, 255, 0.25);
+  --text-shadow-strong: 0 8px 18px rgba(0, 0, 0, 0.35);
+  --mask-transparent: rgba(0, 0, 0, 0);
+  --mask-opaque: rgba(0, 0, 0, 1);
 }
 
 @theme inline {
@@ -178,4 +317,32 @@
     font-weight: var(--font-weight-normal);
     line-height: 1.5;
   }
+}
+
+.portfolio-hover-text {
+  color: var(--portfolio-text-ghost);
+  transition: color 0.3s ease;
+}
+
+.group:hover .portfolio-hover-text {
+  color: var(--portfolio-text) !important;
+}
+
+.accent-hover-card {
+  transition: all 0.4s ease;
+}
+
+.accent-hover-card:hover {
+  border-color: var(--accent);
+  background: rgba(var(--accent-rgb), 0.08);
+  box-shadow: 0 0 24px rgba(var(--accent-rgb), 0.18);
+}
+
+.accent-hover-card .accent-hover-icon {
+  color: var(--text-subtle);
+  transition: color 0.3s ease;
+}
+
+.accent-hover-card:hover .accent-hover-icon {
+  color: var(--accent);
 }

@@ -10,46 +10,46 @@ function scrollToTop() {
 const frontendSkills = [
   {
     abbr: "H",
-    color: "#E34F26",
+    color: "var(--skill-html)",
   },
   {
     abbr: "C",
-    color: "#1572B6",
+    color: "var(--skill-css)",
   },
   {
     abbr: "JS",
-    color: "#F7DF1E",
+    color: "var(--skill-js)",
   },
   {
     abbr: "TS",
-    color: "#3178C6",
+    color: "var(--skill-ts)",
   },
   {
     abbr: "N",
-    color: "#FFFFFF",
+    color: "var(--skill-next)",
   },
 ];
 
 const backendSkills = [
   {
     abbr: "J",
-    color: "#ED8B00",
+    color: "var(--skill-java)",
   },
   {
     abbr: "SB",
-    color: "#6DB33F",
+    color: "var(--skill-spring)",
   },
   {
     abbr: "Py",
-    color: "#3776AB",
+    color: "var(--skill-python)",
   },
   {
     abbr: "M",
-    color: "#47A248",
+    color: "var(--skill-mongo)",
   },
   {
     abbr: "SQL",
-    color: "#CC2927",
+    color: "var(--skill-sql)",
   },
 ];
 
@@ -60,75 +60,44 @@ interface SkillCardProps {
 }
 
 function SkillCard({ skill, index, isInView }: SkillCardProps) {
+  const isWideLabel = skill.abbr.length > 2;
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: 0.4 + index * 0.08 }}
-      className="group relative flex flex-col items-center justify-center gap-3 cursor-default"
-      style={{
-        padding: "2rem 1rem",
-        border: "1px solid rgba(255,255,255,0.06)",
-        borderRadius: "4px",
-        transition: "all 0.4s ease",
-        background: "rgba(255,255,255,0.01)",
-      }}
+      className="group relative flex h-full flex-col items-center justify-center gap-3 rounded-xl border border-slate-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-800 p-8 text-gray-900 dark:text-white shadow-sm"
       whileHover={{
-        borderColor: "rgba(225,6,0,0.4)",
-        backgroundColor: "rgba(225,6,0,0.04)",
+        borderColor: "rgba(var(--portfolio-accent-rgb), 0.4)",
+        backgroundColor: "rgba(var(--portfolio-accent-rgb), 0.04)",
         scale: 1.05,
         y: -4,
       }}
+      style={{ "--skill-color": skill.color } as React.CSSProperties}
     >
       <div
-        className="flex items-center justify-center"
-        style={{
-          width: "52px",
-          height: "52px",
-          borderRadius: "8px",
-          background: `${skill.color}14`,
-          border: `1px solid ${skill.color}30`,
-          transition: "all 0.4s ease",
-          fontWeight: 800,
-          fontSize: skill.abbr.length > 2 ? "0.65rem" : "0.95rem",
-          color: skill.color,
-          letterSpacing: skill.abbr.length > 2 ? "0.05em" : "0",
-        }}
+        className={`flex h-[52px] w-[52px] items-center justify-center rounded-lg border border-slate-200 dark:border-gray-700 bg-white dark:bg-gray-900/70 font-extrabold shadow-sm text-[var(--skill-color)] ${
+          isWideLabel ? "text-[0.65rem] tracking-[0.05em]" : "text-[0.95rem]"
+        }`}
       >
         {skill.abbr}
       </div>
 
       <span
-        style={{
-          color: "rgba(255,255,255,0.8)",
-          fontSize: "0.8rem",
-          fontWeight: 500,
-          letterSpacing: "0.05em",
-          textAlign: "center",
-        }}
+        className="text-sm font-medium tracking-wide text-gray-800 dark:text-white/80"
       >
         {skill.name}
       </span>
 
       <span
-        style={{
-          color: "rgba(255,255,255,0.25)",
-          fontSize: "0.6rem",
-          letterSpacing: "0.2em",
-          textTransform: "uppercase",
-        }}
+        className="text-[0.6rem] uppercase tracking-[0.2em] text-gray-500 dark:text-white/40"
       >
         {skill.description}
       </span>
 
-      <div
-        className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100"
-        style={{
-          borderRadius: "4px",
-          boxShadow: "inset 0 0 30px rgba(225,6,0,0.05)",
-          transition: "opacity 0.4s ease",
-        }}
-      />
+      <div className="absolute inset-0 pointer-events-none rounded-xl opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+        <div className="absolute inset-0 rounded-xl shadow-[inset_0_0_30px_rgba(var(--accent-rgb),0.05)]" />
+      </div>
     </motion.div>
   );
 }
@@ -155,16 +124,16 @@ export function Skills() {
       id="skills"
       ref={ref}
       className="relative min-h-screen flex flex-col justify-center px-8 md:px-16 lg:px-24 py-24"
-      style={{ background: "#0B0B0B" }}
+      style={{ background: "var(--portfolio-bg)" }}
     >
-      <div style={{ height: "1px", background: "rgba(255,255,255,0.08)", marginBottom: "4rem" }} />
+      <div style={{ height: "1px", background: "var(--portfolio-divider)", marginBottom: "4rem" }} />
 
       <motion.p
         initial={{ opacity: 0, x: -20 }}
         animate={isInView ? { opacity: 1, x: 0 } : {}}
         transition={{ duration: 0.6 }}
         style={{
-          color: "#E10600",
+          color: "var(--portfolio-accent)",
           fontSize: "0.75rem",
           letterSpacing: "0.3em",
           textTransform: "uppercase",
@@ -179,7 +148,7 @@ export function Skills() {
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
         style={{
-          color: "#FFFFFF",
+          color: "var(--portfolio-text)",
           fontSize: "clamp(3rem, 8vw, 7rem)",
           fontWeight: 800,
           lineHeight: 0.95,
@@ -197,7 +166,7 @@ export function Skills() {
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ delay: 0.2 }}
             style={{
-              color: "rgba(255,255,255,0.3)",
+              color: "var(--portfolio-text-faint)",
               fontSize: "0.65rem",
               letterSpacing: "0.3em",
               textTransform: "uppercase",
@@ -224,7 +193,7 @@ export function Skills() {
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ delay: 0.3 }}
             style={{
-              color: "rgba(255,255,255,0.3)",
+              color: "var(--portfolio-text-faint)",
               fontSize: "0.65rem",
               letterSpacing: "0.3em",
               textTransform: "uppercase",
@@ -253,22 +222,22 @@ export function Skills() {
       >
         <ArrowUpLeft
           style={{
-            color: "rgba(255,255,255,0.25)",
+            color: "var(--portfolio-text-ghost)",
             transition: "color 0.3s ease",
             width: "20px",
             height: "20px",
           }}
-          className="group-hover:!text-white"
+          className="portfolio-hover-text"
         />
         <span
           style={{
-            color: "rgba(255,255,255,0.25)",
+            color: "var(--portfolio-text-ghost)",
             fontSize: "0.65rem",
             letterSpacing: "0.25em",
             textTransform: "uppercase",
             transition: "color 0.3s ease",
           }}
-          className="group-hover:!text-white"
+          className="portfolio-hover-text"
         >
           {t.skills.backToTop}
         </span>

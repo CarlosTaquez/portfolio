@@ -31,9 +31,30 @@ export const translations = {
       titleTop: "ABOUT",
       titleBottom: "ME",
       bio: "I am a Software Engineer graduated from Universidad Cooperativa de Colombia. I am passionate about building modern, scalable and efficient software solutions, combining clean design with solid architecture. I enjoy creating digital experiences that are both functional and visually appealing.",
+      focusLabel: "Focus Areas",
+      focusItems: ["Product UI", "Frontend Systems", "Backend Foundations"],
       hobbiesLabel: "Hobbies & Interests",
       hobbiesText:
         "Beyond software and technology, I enjoy sports, especially cycling. Automobiles are one of my greatest passions, as they represent innovation, engineering and design at their finest. I also have a pet named Eros, who inspired one of my personal projects.",
+      highlightsLabel: "What I Value",
+      highlights: [
+        {
+          title: "Clean Architecture",
+          text: "Readable codebases that scale and stay easy to maintain.",
+        },
+        {
+          title: "Collaboration",
+          text: "Sharing ideas, learning from feedback, and helping teams move faster.",
+        },
+        {
+          title: "Continuous Growth",
+          text: "Building projects that push me to learn new tools and patterns.",
+        },
+        {
+          title: "Detail-Driven UI",
+          text: "Interfaces that feel intentional, balanced, and easy to scan.",
+        },
+      ],
       backToTop: "Back to top",
     },
     projects: {
@@ -67,6 +88,8 @@ export const translations = {
     testimonials: {
       sectionLabel: "03 - Testimonials",
       title: "TESTIMONIALS",
+      ctaLabel: "Add Testimonial",
+      ctaNote: "Share your feedback",
       items: [
         {
           name: "Fernando Salazar",
@@ -182,6 +205,27 @@ export const translations = {
       titleTop: "SOBRE",
       titleBottom: "MÍ",
       bio: "Soy Ingeniero de Software egresado de la Universidad Cooperativa de Colombia. Me apasiona desarrollar soluciones modernas, escalables y eficientes, combinando diseño limpio con arquitectura sólida. Disfruto crear experiencias digitales funcionales y visualmente atractivas.",
+      focusLabel: "Enfoque",
+      focusItems: ["UI de producto", "Frontend moderno", "Bases de backend"],
+      highlightsLabel: "Lo Que Valoro",
+      highlights: [
+        {
+          title: "Arquitectura clara",
+          text: "Codigo legible, escalable y facil de mantener.",
+        },
+        {
+          title: "Colaboracion",
+          text: "Compartir ideas, aprender del feedback y avanzar en equipo.",
+        },
+        {
+          title: "Crecimiento continuo",
+          text: "Proyectos que me retan a aprender nuevas herramientas.",
+        },
+        {
+          title: "UI con detalle",
+          text: "Interfaces equilibradas y faciles de leer.",
+        },
+      ],
       hobbiesLabel: "Hobbies e Intereses",
       hobbiesText:
         "Además de la tecnología y el desarrollo de software, disfruto el deporte, especialmente el ciclismo. Los automóviles son una gran pasión para mí, representan innovación, ingeniería y diseño en su máxima expresión. También tengo una mascota llamada Eros, quien inspiró uno de mis proyectos personales.",
@@ -221,6 +265,8 @@ export const translations = {
     testimonials: {
       sectionLabel: "03 - Testimonios",
       title: "TESTIMONIOS",
+      ctaLabel: "Agregar testimonio",
+      ctaNote: "Enviame tu opinion",
       items: [
         {
           name: "Fernando Salazar",

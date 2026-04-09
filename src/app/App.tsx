@@ -10,53 +10,56 @@ import { Skills } from "./components/Skills";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
 import { LanguageProvider } from "./context/LanguageContext";
+import { ThemeProvider } from "./context/ThemeContext";
 
 export default function App() {
   return (
-    <LanguageProvider>
-      <div
-        style={{
-          background: "#0B0B0B",
-          overflowX: "hidden",
-        }}
-      >
-        <style>{`
-          html {
-            scroll-behavior: smooth;
-          }
-          * {
-            box-sizing: border-box;
-          }
-          ::-webkit-scrollbar {
-            width: 4px;
-          }
-          ::-webkit-scrollbar-track {
-            background: #0B0B0B;
-          }
-          ::-webkit-scrollbar-thumb {
-            background: #E10600;
-            border-radius: 2px;
-          }
-          ::-webkit-scrollbar-thumb:hover {
-            background: #ff1a00;
-          }
-          ::selection {
-            background: #E10600;
-            color: #FFFFFF;
-          }
-        `}</style>
+    <ThemeProvider>
+      <LanguageProvider>
+        <div
+          style={{
+            background: "var(--portfolio-bg)",
+            overflowX: "hidden",
+          }}
+        >
+          <style>{`
+            html {
+              scroll-behavior: smooth;
+            }
+            * {
+              box-sizing: border-box;
+            }
+            ::-webkit-scrollbar {
+              width: 4px;
+            }
+            ::-webkit-scrollbar-track {
+              background: var(--portfolio-scrollbar-track);
+            }
+            ::-webkit-scrollbar-thumb {
+              background: var(--portfolio-scrollbar-thumb);
+              border-radius: 2px;
+            }
+            ::-webkit-scrollbar-thumb:hover {
+              background: var(--accent-hover);
+            }
+            ::selection {
+              background: var(--accent);
+              color: var(--selection-text);
+            }
+          `}</style>
 
-        <Navbar />
-        <Hero />
-        <About />
-        <Projects />
-        <Testimonials />
-        <Experience />
-        <Skills />
-        <Contact />
-        <Footer />
-      </div>
-    </LanguageProvider>
+          <Navbar />
+          <Hero />
+          <About />
+          <Projects />
+          <Testimonials />
+          <Experience />
+          <Skills />
+          <Contact />
+          <Footer />
+        </div>
+      </LanguageProvider>
+    </ThemeProvider>
   );
 }
 
